@@ -2,10 +2,13 @@ import css from "./Contact.module.css";
 import { RiUser3Fill } from "react-icons/ri";
 import { BiSolidPhone } from "react-icons/bi";
 import { useDispatch } from "react-redux";
-import { deleteContact } from "../../redux/contactsSlice";
+import { deleteContact } from "../../redux/contactsOps";
 
 export default function Contacts({ data }) {
   const dispatch = useDispatch();
+
+  const handleDelete = () => dispatch(deleteContact(data.id));
+
   return (
     <div className={css.container} key={data.id}>
       <div className={css.data}>
@@ -19,10 +22,7 @@ export default function Contacts({ data }) {
         </p>
       </div>
 
-      <button
-        className={css.btn}
-        onClick={() => dispatch(deleteContact(data.id))}
-      >
+      <button className={css.btn} onClick={handleDelete}>
         Delete
       </button>
     </div>
