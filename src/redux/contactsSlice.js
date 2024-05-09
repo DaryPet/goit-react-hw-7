@@ -42,7 +42,7 @@ const contactSlice = createSlice({
         state.loading = false;
         state.error = false;
         state.items = state.items.filter(
-          (contact) => contact.id !== action.meta.argn
+          (contact) => contact.id !== action.meta.arg
         );
       })
       .addCase(deleteContact.rejected, (state) => {
